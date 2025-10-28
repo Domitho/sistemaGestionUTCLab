@@ -1,0 +1,104 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="utc.SiteMaster" %>
+<%@ Register Src="~/ViewSwitcher.ascx" TagName="ViewSwitcher" TagPrefix="uc1" %>
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="es">
+<head runat="server">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Universidad Técnica de Cotopaxi..</title>
+
+    <!-- CSS global -->
+    <link href="~/Styles/Site.css" rel="stylesheet" type="text/css" />
+    <link href="Styles/fa/css/all.css" rel="stylesheet" />
+    <!-- Bootstrap 3.x (no mezclar con 4.x) -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css" />
+    <!-- Font Awesome (una sola vez) -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" />
+    <!-- Toastr CSS (si lo usas) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" />
+
+    <!-- JS base: jQuery primero -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <!-- Bootstrap 3 JS -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+    <!-- SweetAlert2 (una sola vez, aquí) -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <!-- Toastr JS (una sola vez) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/js/toastr.js" type="text/javascript"></script>
+
+    <asp:ContentPlaceHolder ID="HeadContent" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body style="border-color:aquamarine">
+    <form runat="server">
+        <div style="border: 1px solid #496077;width:90%;margin: 10px auto 0px auto;">
+            <div class="header">
+                <div style="display: block; float: left; text-align: center; width: auto;">
+                    <h1 class="text-center">
+                        <img width="260" alt="UTC" src="https://aplicaciones.utc.edu.ec/sigutc/img/bnUTC.png" />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SISTEMA INTEGRADO DE GESTIÓN
+                    </h1>
+                </div>
+                <div class="loginDisplay inline">
+                    <br />
+                    <label runat="server">BIENVENIDO</label>
+                    <br />
+                    <asp:label runat="server" id="lblNombre">9999999999999</asp:label>
+                    <br />
+                    <asp:Button ID="btnCerrarSesion" runat="server" OnClick="btnCerrarSesion_Click" Text="Cerrar Sesión" BackColor="#312783" />
+                </div>
+
+                <!-- Menú -->
+                <div class="hideSkiplink text-center" style="z-index: 1009; display: flex !important;">
+                    <asp:Menu ID="NavigationMenu" runat="server" CssClass="menu" EnableViewState="false" IncludeStyleBlock="false" Orientation="Horizontal" TabIndex="1010" Visible="true">
+                        <Items>
+                            <asp:MenuItem NavigateUrl="Dashboard.aspx" Text="Dashboard" Value="publico"></asp:MenuItem>
+                            <asp:MenuItem Text="Convocatoria de Investigación" Value="alumno" Selectable="true" NavigateUrl="Convocatoria.aspx"></asp:MenuItem>
+                            <asp:MenuItem Text="Proyectos de Investigación" Value="docente" Selectable="true" NavigateUrl="InsPro.aspx"></asp:MenuItem>
+                            <asp:MenuItem Text="Grupos de Investigación" Value="docente" Selectable="true" NavigateUrl="GrupoInv.aspx"></asp:MenuItem>
+                            <asp:MenuItem Text="Centros de Investigación" Value="docente" Selectable="true" NavigateUrl="CentInv.aspx"></asp:MenuItem>
+                            <asp:MenuItem Text="Categorización de Docentes" Value="docente" Selectable="true" NavigateUrl="Categorizacion.aspx"></asp:MenuItem>
+                            <asp:MenuItem Text="Gestión de Publicaciones" Value="docente" Selectable="true" NavigateUrl="Publicaciones.aspx"></asp:MenuItem>
+                        </Items>
+                    </asp:Menu>
+                </div>
+            </div>
+
+            <div class="main">
+                <asp:ContentPlaceHolder ID="MainContent" runat="server">
+                    <asp:ScriptManager ID="ScriptManager" runat="server"></asp:ScriptManager>
+                </asp:ContentPlaceHolder>
+            </div>
+            <div class="clear"></div>
+        </div>
+
+        <div class="footer">
+            <p class="text-center" style="margin: 0px 0px 10px; text-align: center; font-size: 8px">
+                <a hidden="hidden" href="http://ior.ad/6z9G" target="_blank">MANUAL DE USUARIO</a>
+            </p>
+            <p class="muted text-right" style="margin: 0px 0px 10px; color: rgb(153, 153, 153); text-align: center; font-size: 8px">
+                © Powered by Desarrollo de Software UTC <asp:Label ID="lblFecha" runat="server"></asp:Label>
+            </p>
+        </div>
+    </form>
+
+    <!-- Utilidades globales -->
+    <script>
+        function toastify(type, msg, title, position, showclosebutton) {
+            toastr.options.positionClass = position && position !== '' ? position : 'toast-bottom-right';
+            toastr.options.closeButton = (showclosebutton == null || showclosebutton === '' || showclosebutton === 'true') ? 'true' : 'false';
+            toastr.options.timeOut = '50000';
+            toastr.options.progressBar = true;
+            switch (type) {
+                case 'success': toastr.success(msg, title); break;
+                case 'info':    toastr.info(msg, title); break;
+                case 'warning': toastr.warning(msg, title); break;
+                case 'error':   toastr.error(msg, title); break;
+            }
+        }
+    </script>
+</body>
+</html>
