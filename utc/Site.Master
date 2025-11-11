@@ -62,6 +62,7 @@
                             <asp:MenuItem Text="Centros de Investigación" Value="docente" Selectable="true" NavigateUrl="CentInv.aspx"></asp:MenuItem>
                             <asp:MenuItem Text="Categorización de Docentes" Value="docente" Selectable="true" NavigateUrl="Categorizacion.aspx"></asp:MenuItem>
                             <asp:MenuItem Text="Gestión de Publicaciones" Value="docente" Selectable="true" NavigateUrl="Publicaciones.aspx"></asp:MenuItem>
+                            <asp:MenuItem Text="Calificación a Grupos" Value="docente" Selectable="true" NavigateUrl="Valoracion.aspx"></asp:MenuItem>
                         </Items>
                     </asp:Menu>
                 </div>

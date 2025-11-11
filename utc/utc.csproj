@@ -247,6 +247,7 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Site.Master" />
+    <Content Include="Valoracion.aspx" />
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -437,6 +438,7 @@
     <Compile Include="Models\InvgccIntegrantes.cs" />
     <Compile Include="Models\InvgccMiembros.cs" />
     <Compile Include="Models\InvgccPublicacion.cs" />
+    <Compile Include="Models\InvgccValoracion.cs" />
     <Compile Include="Models\InvgccPublicacionDetalle.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Publicaciones.aspx.cs">
@@ -466,6 +468,13 @@
       <DependentUpon>Site.Mobile.Master</DependentUpon>
     </Compile>
     <Compile Include="Startup.cs" />
+    <Compile Include="Valoracion.aspx.cs">
+      <DependentUpon>Valoracion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Valoracion.aspx.designer.cs">
+      <DependentUpon>Valoracion.aspx</DependentUpon>
+    </Compile>
     <Compile Include="ViewSwitcher.ascx.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
